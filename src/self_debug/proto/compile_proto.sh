@@ -16,6 +16,7 @@ proto_files+=("llm_agent.proto")
 proto_files+=("config.proto")
 proto_files+=("cloudwatch.proto")
 
+protoc_path=$(which protoc)
 for proto_file in "${proto_files[@]}"; do
-    $HOME/.local/bin/protoc $INPUT_DIR/proto/$proto_file --python_out=$OUTPUT_DIR
+    $protoc_path $INPUT_DIR/proto/$proto_file --python_out=$OUTPUT_DIR
 done
