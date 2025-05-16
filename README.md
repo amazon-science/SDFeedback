@@ -67,9 +67,10 @@ markdown-toc -i README.md
 
 [SDFeedback](https://github.com/amazon-science/SDFeedback)
 is a library to conduct code migration with LLMs,
-and improves efficacy by providing feedback to LLMs as specific as possible.
+and improves efficacy by providing feedback to LLMs as specific as possible,
+motivated by [Teaching Large Language Models to Self-Debug](https://arxiv.org/abs/2304.05128).
 
-- Reference paper: [Teaching Large Language Models to Self-Debug](https://arxiv.org/abs/2304.05128) in April 2023.
+- Reference paper: [MigrationBench: Repository-Level Code Migration Benchmark from Java 8](https://arxiv.org/abs/2505.09569)
 
 
 ### 1.1 [MigrationBench](https://github.com/amazon-science/MigrationBench): Datasets and Evaluation Framework
