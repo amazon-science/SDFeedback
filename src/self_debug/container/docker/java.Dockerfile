@@ -17,12 +17,12 @@
 #   * wget
 # - [java]
 # - maven (s3)
-# - Self debugging (./SelfDebug)
+# - Self debugging (./SDFeedback)
 # *************************
 #
 #
 # Inputs:
-#   - It copies ./SelfDebug, which can include your local changes
+#   - It copies ./SDFeedback, which can include your local changes
 #
 # Outputs:
 #   - Self debugging lib at: $SELF_DEBUGGING_PATH=/self-dbg
@@ -113,11 +113,15 @@ RUN mkdir /SDK && \
     chmod 777 /SDK
 
 WORKDIR /
-COPY SelfDebug self-dbg
+COPY MigrationBench MigrationBench
+COPY SDFeedback self-dbg
 ### COPY SDKAssemblies.zip /SDK
 ### COPY QnetTransformCLI.zip .
 
-RUN cd $SELF_DEBUGGING_PATH && \
+RUN cd /MigrationBench && \
+    pip install -r requirements.txt -e . && \
+    \
+    cd $SELF_DEBUGGING_PATH && \
     rm -rf src/*.egg-info && \
     # git log -2 && \
     # du -sh .git && \

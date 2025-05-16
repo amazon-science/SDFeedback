@@ -6,9 +6,9 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="SelfDebug",
+    name="SDFeedback",
     version="0.1.0",
-    description="SelfDebug",
+    description="SDFeedback",
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_packages(where="src"),

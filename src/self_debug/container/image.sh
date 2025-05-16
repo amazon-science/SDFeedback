@@ -27,27 +27,29 @@ cp -r ~/.aws .
 
 curl -O https://archive.apache.org/dist/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.zip
 
-rm -rf SelfDebug
-git clone --depth 1 https://github.com/amazon-science/self_debug.git
-mv self_debug SelfDebug
+rm -rf MigrationBench
+rm -rf SDFeedback
+git clone --depth 1 https://github.com/amazon-science/MigrationBench.git
+git clone --depth 1 https://github.com/amazon-science/SDFeedback.git
+# mv self_debug SDFeedback
 
-sed -i "s/^transformers$/### transformers   ### To reduce container size/g" SelfDebug/requirements.txt
-sed -i "s/^torch$/### torch   ### To reduce container size/g" SelfDebug/requirements.txt
+sed -i "s/^transformers$/### transformers   ### To reduce container size/g" SDFeedback/requirements.txt
+sed -i "s/^torch$/### torch   ### To reduce container size/g" SDFeedback/requirements.txt
 
-# sed -i "s/^  timeout_minutes: 90$/  timeout_minutes: 5/g" SelfDebug/src/configs/java_compile_config.pbtxt SelfDebug/src/configs/java_compile_config_08.pbtxt
+# sed -i "s/^  timeout_minutes: 90$/  timeout_minutes: 5/g" SDFeedback/src/configs/java_compile_config.pbtxt SDFeedback/src/configs/java_compile_config_08.pbtxt
 
-# sed -i "s/^  run_java_base_commit_search: true$/  run_java_base_commit_search: true\n  run_java_hash: true/g" SelfDebug/src/configs/java_compile_config.pbtxt SelfDebug/src/configs/java_compile_config_08.pbtxt
-# sed -i "s/^  run_java_base_commit_search: true$/  run_java_base_commit_search: false\n  run_java_base_commit_search_no_maven: true/g" SelfDebug/src/configs/java_compile_config.pbtxt SelfDebug/src/configs/java_compile_config_08.pbtxt
+# sed -i "s/^  run_java_base_commit_search: true$/  run_java_base_commit_search: true\n  run_java_hash: true/g" SDFeedback/src/configs/java_compile_config.pbtxt SDFeedback/src/configs/java_compile_config_08.pbtxt
+# sed -i "s/^  run_java_base_commit_search: true$/  run_java_base_commit_search: false\n  run_java_base_commit_search_no_maven: true/g" SDFeedback/src/configs/java_compile_config.pbtxt SDFeedback/src/configs/java_compile_config_08.pbtxt
 
-cd SelfDebug
+cd SDFeedback
 git diff
 cd ..
-rm -rf SelfDebug/dotnet
-rm -rf SelfDebug/scripts
+rm -rf SDFeedback/dotnet
+rm -rf SDFeedback/scripts
 cd -
 # Used in final eval: base commit id & #test-cases
-git checkout scripts/benchmark/java/raw-metrics-generated/raw_metrics__20250322-125330__repo__len-9978.json.normalized.full-len-05119
-git checkout scripts/benchmark/java/raw-metrics/emrs-dbg-sliuxl--20250321--run02-hash/sliuxl-builder-java-v05d6-20250322-101827--nodes023x04--r-q7ls09/java__v05--6_20250321--pbtxt/raw_metrics__20250322-125330__repo__len-9978.json
+# git checkout scripts/benchmark/java/raw-metrics-generated/raw_metrics__20250322-125330__repo__len-9978.json.normalized.full-len-05119 || true
+# git checkout scripts/benchmark/java/raw-metrics/emrs-dbg-sliuxl--20250321--run02-hash/sliuxl-builder-java-v05d6-20250322-101827--nodes023x04--r-q7ls09/java__v05--6_20250321--pbtxt/raw_metrics__20250322-125330__repo__len-9978.json || true
 cd -
 
 
