@@ -18,6 +18,9 @@ KWARGS_01 = {
     "columns": hf_utils.COLUMNS,
 }
 
+_LEN_FULL = 5102
+_LEN_SELECTED = 300
+
 TEMPLATE_DATASET_TEXTPROTO = """
 hf_option: HF_OPTION
 dataset_partition {
@@ -35,7 +38,7 @@ class TestHfUtils(unittest.TestCase):
             (
                 hf_utils.JAVA_FULL,
                 {},
-                (8, 3),
+                (8, _LEN_FULL),
             ),
             (
                 hf_utils.JAVA_FULL,
@@ -78,7 +81,7 @@ class TestHfUtils(unittest.TestCase):
             (
                 hf_utils.JAVA_SELECTED,
                 {},
-                (8, 3),
+                (8, _LEN_SELECTED),
             ),
             (
                 hf_utils.JAVA_SELECTED,

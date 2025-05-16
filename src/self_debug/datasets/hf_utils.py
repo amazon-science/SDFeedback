@@ -5,6 +5,7 @@ import os
 import datasets
 
 from self_debug.proto import dataset_pb2
+from migration_bench.common.hf_utils import load_hf_dataset
 
 # https://huggingface.co/datasets/AmazonScience/migration-bench-java-full
 JAVA_FULL = "AmazonScience/migration-bench-java-full"
@@ -20,29 +21,6 @@ DATASET_NAME_OPTIONS = {
     dataset_pb2.Dataset.HuggingfaceOption.MIGRATION_BENCH_JAVA_SELECTED: JAVA_SELECTED,
     dataset_pb2.Dataset.HuggingfaceOption.MIGRATION_BENCH_JAVA_UTG: JAVA_UTG,
 }
-
-
-def load_hf_dataset(
-    name: str = JAVA_FULL, split: str = "test", columns=None, first_n: int = None
-):
-    """Load HF dataset by name, taking given `columns` and `first_n` rows only."""
-    hf_ds = datasets.load_dataset(name, split=split)
-
-    if columns is None:
-        columns = list(hf_ds.column_names)
-
-    values = {}
-    for col in columns:
-        loaded = list(hf_ds[col])
-        if first_n is not None:
-            if first_n > 0:
-                loaded = loaded[:first_n]
-            elif first_n < 0:
-                loaded = loaded[first_n:]
-
-        values[col] = loaded
-
-    return values
 
 
 def resolve_hf_dataset(ds_config, **kwargs):
