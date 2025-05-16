@@ -66,22 +66,6 @@ class TestConfigs(unittest.TestCase):
             ),
             # Other dirs.
             (
-                "../batch/configs/batch_java__v00_ozt_ngde_20240620__first10.pbtxt",
-                batch_pb2.BatchJob,
-            ),
-            (
-                "../batch/configs/batch_java__v01_zhouqia_or_20241030.pbtxt",
-                batch_pb2.BatchJob,
-            ),
-            (
-                "../batch/configs/batch_java__v01_zhouqia_or_20241030__first10.pbtxt",
-                batch_pb2.BatchJob,
-            ),
-            (
-                "../batch/configs/batch_java__v01_zhouqia_or_20241030__first100.pbtxt",
-                batch_pb2.BatchJob,
-            ),
-            (
                 "../datasets/configs/java/dataset_java_unittest.pbtxt",
                 config_pb2.Config,
             ),

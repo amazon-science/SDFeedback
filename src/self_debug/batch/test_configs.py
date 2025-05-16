@@ -39,18 +39,6 @@ class TestConfigs(unittest.TestCase):
         (
             # Java
             (
-                "configs/batch_java__v00_ozt_ngde_20240620__first10.pbtxt",
-                "configs/batch_java__v01_zhouqia_or_20241030__first10.pbtxt",
-            ),
-            (
-                "configs/batch_java__v01_zhouqia_or_20241030.pbtxt",
-                "configs/batch_java__v01_zhouqia_or_20241030__first10.pbtxt",
-            ),
-            (
-                "configs/batch_java__v01_zhouqia_or_20241030.pbtxt",
-                "configs/batch_java__v01_zhouqia_or_20241030__first100.pbtxt",
-            ),
-            (
                 "configs/batch_java__v05_raw_20250113.pbtxt",
                 "configs/batch_java__v05_raw_20250113__first100.pbtxt",
             ),
