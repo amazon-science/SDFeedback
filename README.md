@@ -175,7 +175,8 @@ To run code migration for a single repository:
 ```
 cd ~/SDFeedback/src/self_debug
 
-python run_self_debugging.py ...
+# Explicit `max_iteration` will override it in the `config_file`
+python run_self_debugging.py --config_file configs/java_config.pbtxt  # --max_iterations 3
 ```
 
 ### 3.2 Batch Job
@@ -205,7 +206,8 @@ Before submitting a job to EMRS, make sure you have the following ready:
 ```
 cd ~/SDFeedback/src/self_debug/container
 
-./image.sh ...
+# To build ECR image: 552793110740.dkr.ecr.us-east-1.amazonaws.com/$USER:java
+./image.sh java $USER 1 docker/java.Dockerfile  # 999999999999.dkr.ecr.us-west-2.amazonaws.com
 ```
 
 2. Submit a spark job to EMRS
@@ -216,7 +218,11 @@ Note that security keys might be subject to `12h` timeout.
 cd ~/SDFeedback/src/self_debug/batch
 
 # Update config file as needed for `emrs.py`, e.g. use the right ECR image in step `#1`
-python emrs.py ...
+CONFIG=...
+export APPLICATION=emrs-dbg-{user}--{date}--run00
+export SCRIPT=debugger
+
+python emrs.py --config_file=$CONFIG --application=$APPLICATION --script=$SCRIPT --user=$USER  # --dry_run=1
 ```
 
 
